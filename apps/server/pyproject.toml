@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "deutschflow"
+version = "0.1.0"
+description = "Local-first backend for DeutschFlow"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "pydantic-settings>=2.6,<3",
+  "sqlalchemy>=2.0,<3",
+  "uvicorn>=0.32,<1",
+]
+
+[project.optional-dependencies]
+argos = ["argostranslate>=1.9,<2"]
+dev = ["httpx>=0.27,<1", "pytest>=8,<9", "ruff>=0.8,<1"]
+
+[project.scripts]
+deutschflow-server = "deutschflow.main:run"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/deutschflow"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["B008", "E501", "UP017"]
