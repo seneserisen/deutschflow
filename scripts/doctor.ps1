@@ -38,9 +38,14 @@ if ($Npm) { Show-Check "npm" "OK" (& $Npm.Source --version).Trim() Green }
 else { Fail-Check "npm" "Not found. It is normally installed with Node.js." }
 
 $VenvPython = Join-Path $Repository ".venv\Scripts\python.exe"
+$DependencyLock = Join-Path $Repository "requirements-dev.lock"
+if (Test-Path -LiteralPath $DependencyLock) {
+    Show-Check "Python dependency lock" "OK" "requirements-dev.lock" Green
+} else { Fail-Check "Python dependency lock" "Missing. Restore requirements-dev.lock from Git." }
+
 if (Test-Path -LiteralPath $VenvPython) {
     Show-Check "Virtual environment" "OK" ".venv" Green
-    & $VenvPython -c "import deutschflow, fastapi, sqlalchemy, uvicorn" 2>$null
+    & $VenvPython -c "from importlib.metadata import version; import deutschflow, fastapi, sqlalchemy, uvicorn; assert version('httpx2')" 2>$null
     if ($LASTEXITCODE -eq 0) { Show-Check "Python package" "OK" "DeutschFlow and runtime dependencies import correctly." Green }
     else { Fail-Check "Python package" "Dependencies are incomplete. Run SETUP.bat again." }
 } else {

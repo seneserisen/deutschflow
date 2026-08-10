@@ -21,7 +21,9 @@ else
   printf 'Existing .venv detected.\n'
 fi
 
-"$ROOT/.venv/bin/python" -m pip install -e "$ROOT/apps/server[dev]"
+"$ROOT/.venv/bin/python" -m pip uninstall --yes httpx >/dev/null 2>&1 || true
+"$ROOT/.venv/bin/python" -m pip install --require-hashes -r "$ROOT/requirements-dev.lock"
+"$ROOT/.venv/bin/python" -m pip install --no-deps -e "$ROOT/apps/server"
 npm ci
 npm run build
 printf '\nDeutschFlow setup completed successfully.\nNext: run ./run.sh and follow START_HERE.md.\n'

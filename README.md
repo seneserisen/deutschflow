@@ -45,11 +45,12 @@ Protected API calls require a random bearer token stored in `~/.deutschflow/api.
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -e ".\apps\server[dev]"
-npm install
+.\.venv\Scripts\python.exe -m pip install --require-hashes -r requirements-dev.lock
+.\.venv\Scripts\python.exe -m pip install --no-deps -e ".\apps\server"
+npm ci
 ```
 
-The root launchers use `npm ci` for a lockfile-based installation. The commands above remain available for developers working directly with the workspace.
+The root launchers use the hashed `requirements-dev.lock` and `package-lock.json` files for repeatable Python and Node installations. The commands above remain available for developers working directly with the workspace.
 
 Start the server:
 

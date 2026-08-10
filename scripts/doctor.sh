@@ -16,9 +16,10 @@ if command -v node >/dev/null 2>&1; then
   if node -e 'const [major, minor] = process.versions.node.split(".").map(Number); process.exit((major === 24 && minor >= 15) || major >= 26 ? 0 : 1)'; then ok "Node.js" "$(node --version)"; else fail "Node.js" "Node.js 24.15+ in the Node 24 line, or Node.js 26+, is required."; fi
 else fail "Node.js" "Not found. Install Node.js 24 LTS (24.15 or later)."; fi
 if command -v npm >/dev/null 2>&1; then ok "npm" "$(npm --version)"; else fail "npm" "Not found."; fi
+[ -f "$ROOT/requirements-dev.lock" ] && ok "Python dependency lock" "requirements-dev.lock" || fail "Python dependency lock" "Missing; restore it from Git."
 if [ -x "$ROOT/.venv/bin/python" ]; then
   ok "Virtual environment" ".venv"
-  if "$ROOT/.venv/bin/python" -c 'import deutschflow, fastapi, sqlalchemy, uvicorn' 2>/dev/null; then ok "Python package" "Runtime imports succeeded."; else fail "Python package" "Incomplete; run ./setup.sh again."; fi
+  if "$ROOT/.venv/bin/python" -c 'from importlib.metadata import version; import deutschflow, fastapi, sqlalchemy, uvicorn; assert version("httpx2")' 2>/dev/null; then ok "Python package" "Runtime imports and test client succeeded."; else fail "Python package" "Incomplete; run ./setup.sh again."; fi
 else fail "Virtual environment" "Missing; run ./setup.sh."; fi
 [ -d "$ROOT/node_modules" ] && ok "Extension dependencies" "node_modules exists." || fail "Extension dependencies" "Missing; run ./setup.sh."
 [ -f "$ROOT/apps/extension/dist/manifest.json" ] && ok "Extension build" "dist/manifest.json exists." || fail "Extension build" "Missing; run ./setup.sh or ./run.sh."

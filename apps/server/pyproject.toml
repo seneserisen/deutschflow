@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling==1.28.0"]
 build-backend = "hatchling.build"
 
 [project]
@@ -16,7 +16,7 @@ dependencies = [
 
 [project.optional-dependencies]
 argos = ["argostranslate>=1.9,<2"]
-dev = ["httpx>=0.27,<1", "pytest>=8,<9", "ruff>=0.8,<1"]
+dev = ["httpx2>=2.10,<3", "pytest>=8,<9", "ruff>=0.8,<1"]
 
 [project.scripts]
 deutschflow-server = "deutschflow.main:run"

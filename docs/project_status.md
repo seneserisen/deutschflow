@@ -13,6 +13,7 @@ Implemented:
 - privacy/permissions controls, tests, scripts, and documentation
 - guided setup, run, test, and doctor launchers for Windows and supported Unix-like systems
 - Ubuntu and Windows continuous verification through GitHub Actions
+- hashed Python and locked Node dependency installations for repeatable setup
 
 Not implemented:
 

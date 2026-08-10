@@ -45,9 +45,14 @@ if (-not (Test-Path -LiteralPath $VenvPython)) {
     Write-Host "Existing .venv detected."
 }
 
-Write-Host "Installing DeutschFlow and its development dependencies..."
-& $VenvPython -m pip install -e "$Repository\apps\server[dev]"
-if ($LASTEXITCODE -ne 0) { Stop-WithMessage "Python dependencies could not be installed." }
+Write-Host "Installing locked Python dependencies..."
+# httpx2 replaces the legacy httpx distribution used by older checkouts. Both expose the
+# same import name, so remove the obsolete distribution before installing the lock.
+& $VenvPython -m pip uninstall --yes httpx | Out-Null
+& $VenvPython -m pip install --require-hashes -r (Join-Path $Repository "requirements-dev.lock")
+if ($LASTEXITCODE -ne 0) { Stop-WithMessage "Locked Python dependencies could not be installed." }
+& $VenvPython -m pip install --no-deps -e (Join-Path $Repository "apps\server")
+if ($LASTEXITCODE -ne 0) { Stop-WithMessage "DeutschFlow could not be installed into the local environment." }
 
 Write-Host "Installing locked extension dependencies..."
 & $Npm.Source ci

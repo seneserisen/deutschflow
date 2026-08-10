@@ -8,4 +8,6 @@ Manual browser checks are intentionally separate. Follow README steps on a norma
 
 For a guided Windows check, run `TEST.bat`; on Linux/macOS, run `./test.sh`. These thin wrappers invoke the same repository verification as `scripts/verify.ps1` and `scripts/verify.sh`. `DOCTOR.bat`/`./doctor.sh` checks prerequisites and installation state but is not a substitute for tests or manual browser acceptance.
 
-GitHub Actions runs the setup and verification wrappers on current Ubuntu and Windows runners with Python 3.12 and Node.js 24. CI validates clean dependency installation, linting, backend and extension tests, type checking, and the production build. It still cannot replace manual unpacked-extension checks in Chrome and Opera.
+GitHub Actions runs the setup and verification wrappers on current Ubuntu and Windows runners with Python 3.12 and Node.js 24. CI validates clean dependency installation, dependency consistency, high-severity npm audit results, linting, backend and extension tests, type checking, and the production build. It still cannot replace manual unpacked-extension checks in Chrome and Opera.
+
+The verification scripts also assert that the supported `httpx2` test-client distribution is installed. The locked dependency replaced legacy `httpx`, eliminating the Starlette deprecation path while preserving the FastAPI `TestClient` interface used by the tests.

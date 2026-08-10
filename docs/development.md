@@ -4,7 +4,9 @@ DeutschFlow is an independent Git repository. Do not place another Git repositor
 
 ## Local setup
 
-Use `SETUP.bat` on Windows or `./setup.sh` on Linux/macOS for the reproducible, lockfile-based setup. The scripts create or reuse `.venv`, install the editable Python backend with development dependencies, install Node dependencies with `npm ci`, and build the extension.
+Use `SETUP.bat` on Windows or `./setup.sh` on Linux/macOS for the reproducible, lockfile-based setup. The scripts create or reuse `.venv`, install hashed Python dependencies from `requirements-dev.lock`, install the editable backend without re-resolving dependencies, install Node dependencies with `npm ci`, and build the extension.
+
+The Python lock is generated from `apps/server/pyproject.toml` with `pip-tools`. Dependency updates should deliberately regenerate the lock with hashes and pass verification on Python 3.12 before publication. Argos remains an explicit optional installation because its language packages must never be downloaded automatically.
 
 Direct developer commands remain available:
 
