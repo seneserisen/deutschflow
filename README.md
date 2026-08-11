@@ -20,7 +20,7 @@ For a guided, low-technical-skill setup, begin with [START_HERE.md](START_HERE.m
 2. Select German text on an ordinary webpage.
 3. Right-click and choose **DeutschFlow: Learn selection**.
 4. The **Learn** view shows the exact selection, bounded source sentence, local translation status, editable grammar details, notes, and topic.
-5. Save it, resolve an exact duplicate as a new occurrence or separate sense, then search/filter it in **Wordbook**.
+5. Save it, resolve an exact duplicate as a new occurrence or separate sense, then search/filter it and edit its translation or grammar details in **Wordbook**.
 6. Open **Review**, reveal or type an answer, and grade with Again/Hard/Good/Easy (keys 1–4).
 7. Export JSON for round-trip backup or CSV for a spreadsheet.
 
