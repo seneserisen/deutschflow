@@ -4,6 +4,7 @@ import { api, ApiError, downloadExport } from "../api/client";
 import { DEFAULT_SETTINGS, getPendingSelection, getSettings, saveSettings, type ExtensionSettings } from "../storage";
 import type { DueCard, ItemType, LearningItem, PendingSelection, TranslationResult } from "../types";
 import { reviewAction } from "../review/keyboard";
+import { WordbookEditor } from "../wordbook/WordbookEditor";
 import "./styles.css";
 import "./settings.css";
 
@@ -121,6 +122,7 @@ function WordbookView() {
     <div className="item-list">{items.map((item) => <article className="item" key={item.id}>
       <div><span className="pill">{item.item_type}</span><h3>{item.original_text}</h3><p>{item.translation || "No translation saved"}</p>
         <small>{item.status} · {new Date(item.created_at).toLocaleDateString()} · {item.occurrences[0]?.source_domain || "no source"}</small></div>
+      <WordbookEditor item={item} onSave={(body) => patch(item.id, body)} />
       <label>Notes<textarea defaultValue={item.notes} onBlur={(e) => { if (e.target.value !== (item.notes ?? "")) void patch(item.id, { notes: e.target.value }); }} /></label>
       <div className="button-row">{item.occurrences[0]?.page_url && <a className="button-link" href={item.occurrences[0].page_url} target="_blank" rel="noreferrer">Open source</a>}
         <button className="secondary" onClick={() => void patch(item.id, { status: item.status === "suspended" ? "learning" : "suspended" })}>{item.status === "suspended" ? "Resume" : "Suspend"}</button>

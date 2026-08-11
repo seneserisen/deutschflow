@@ -7,7 +7,7 @@ Implemented:
 - Phase 1 browser selection workflow with bounded context and fallback
 - local authenticated FastAPI/SQLite backend
 - translation-provider interface, explicit test fake, optional Argos adapter, disabled behavior
-- searchable/filterable/editable wordbook and contextual senses/occurrences
+- searchable/filterable wordbook with translation, grammar, notes, topic, and status editing plus contextual senses/occurrences
 - deterministic review scheduler, due queue, shortcuts, and history
 - versioned JSON/CSV export plus previewed transactional import
 - privacy/permissions controls, tests, scripts, and documentation
