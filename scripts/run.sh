@@ -11,5 +11,5 @@ npm run build
 printf '\nDeutschFlow is ready for the browser.\n'
 printf 'Extension folder: %s/apps/extension/dist\n\n' "$ROOT"
 printf 'Load that folder from chrome://extensions or opera://extensions using Developer mode.\n'
-printf 'The service is starting at http://127.0.0.1:8765. Keep this terminal open; press Ctrl+C to stop.\n\n'
+printf 'The service is starting at http://127.0.0.1:43131. Keep this terminal open; press Ctrl+C to stop.\n\n'
 exec "$ROOT/.venv/bin/python" -m deutschflow.main

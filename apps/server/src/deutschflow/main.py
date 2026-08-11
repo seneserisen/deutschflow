@@ -204,7 +204,12 @@ def create_app(
     @app.get("/api/v1/health")
     def health():
         status = chosen_provider.health()
-        return {"status": "ok", "version": __version__, "provider_available": status.available}
+        return {
+            "application": "deutschflow",
+            "status": "ok",
+            "version": __version__,
+            "provider_available": status.available,
+        }
 
     @app.post("/api/v1/pairing/start")
     def pairing_start(request: Request):

@@ -32,7 +32,7 @@ if command -v git >/dev/null 2>&1 && git -C "$ROOT" rev-parse --is-inside-work-t
   if [ -n "$REMOTE" ]; then ok "Git remote" "$REMOTE"; else warn "Git remote" "No origin configured; add one deliberately when ready."; fi
 else warn "Git" "Git repository information is unavailable; runtime use still works."; fi
 if command -v curl >/dev/null 2>&1; then
-  if curl --fail --silent --show-error --max-time 2 http://127.0.0.1:8765/api/v1/health >/dev/null 2>&1; then ok "Local service" "Running."; else info "Local service" "Not running; ./run.sh starts it."; fi
+  if curl --fail --silent --show-error --max-time 2 http://127.0.0.1:43131/api/v1/health >/dev/null 2>&1; then ok "Local service" "Running."; else info "Local service" "Not running; ./run.sh starts it."; fi
 else info "Local service" "Not checked because curl is unavailable."; fi
 if [ "$FAILURES" -gt 0 ]; then printf '\n%s required check(s) failed.\n' "$FAILURES"; exit 1; fi
 printf '\nAll required environment checks passed.\n'

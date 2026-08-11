@@ -10,7 +10,7 @@ export interface ExtensionSettings {
 }
 
 export const DEFAULT_SETTINGS: ExtensionSettings = {
-  backendUrl: "http://127.0.0.1:8765",
+  backendUrl: "http://127.0.0.1:43131",
   apiToken: "",
   sourceLanguage: "de",
   targetLanguage: "en",

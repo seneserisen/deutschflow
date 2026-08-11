@@ -6,7 +6,7 @@ Run `DOCTOR.bat` on Windows or `./doctor.sh` on Linux/macOS. Fix entries marked 
 
 ## Backend unavailable
 
-Run `RUN.bat` (or `.\scripts\dev-server.ps1` for direct developer use), verify `http://127.0.0.1:8765/api/v1/health`, then use Settings → Check backend. A changed port is not covered by the default manifest host permission.
+Run `RUN.bat` (or `.\scripts\dev-server.ps1` for direct developer use), verify `http://127.0.0.1:43131/api/v1/health`, then use Settings → Check backend. A changed port is not covered by the default manifest host permission.
 
 ## Pairing required or invalid token
 

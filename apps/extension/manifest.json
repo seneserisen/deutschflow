@@ -4,10 +4,9 @@
   "version": "0.1.0",
   "description": "Learn from German text you explicitly select, using a local companion service.",
   "permissions": ["activeTab", "scripting", "contextMenus", "storage", "sidePanel"],
-  "host_permissions": ["http://127.0.0.1:8765/*"],
+  "host_permissions": ["http://127.0.0.1:43131/*"],
   "background": {"service_worker": "assets/background.js", "type": "module"},
   "action": {"default_title": "DeutschFlow", "default_popup": "popup.html"},
   "side_panel": {"default_path": "panel.html"},
   "options_page": "options.html"
 }
-

@@ -27,7 +27,7 @@ For a guided, low-technical-skill setup, begin with [START_HERE.md](START_HERE.m
 ## Architecture and privacy
 
 ```text
-explicit selection → MV3 extension → http://127.0.0.1:8765 → FastAPI
+explicit selection → MV3 extension → http://127.0.0.1:43131 → FastAPI
                                                         ├─ SQLite
                                                         └─ local provider (Argos/disabled)
 ```
@@ -64,7 +64,7 @@ Build the extension:
 npm run build
 ```
 
-The service refuses a configured non-loopback host. Its default URL is `http://127.0.0.1:8765`.
+The service refuses a configured non-loopback host. Its portfolio-assigned URL is `http://127.0.0.1:43131`.
 
 ## Load unpacked in Chrome
 
@@ -116,7 +116,7 @@ GNU Make equivalents are available as `make setup`, `make dev-server`, `make dev
 ## Known limitations
 
 - Browser loading and interaction require a manual check; unit/build success does not prove store/browser behavior.
-- The built manifest grants only the default `127.0.0.1:8765` origin. A different port requires a corresponding manifest permission adjustment and rebuild.
+- The built manifest grants only the portfolio-assigned `127.0.0.1:43131` origin. A different port requires a corresponding manifest permission adjustment and rebuild.
 - Pairing is development-friendly local protection, not internet-grade authentication.
 - Argos quality and installed pair availability are external to DeutschFlow.
 - Sentence extraction is deliberately heuristic and bounded.

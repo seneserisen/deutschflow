@@ -34,8 +34,8 @@ Write-Host "  2. Enable Developer mode and choose Load unpacked."
 Write-Host "  3. Select the extension folder shown above."
 Write-Host "  4. Open DeutschFlow Settings and pair with this local service."
 Write-Host ""
-Write-Host "The local service is starting at http://127.0.0.1:8765."
+Write-Host "The local service is starting at http://127.0.0.1:43131."
 Write-Host "Keep this window open while using DeutschFlow. Press Ctrl+C to stop."
 Write-Host ""
-& $VenvPython -m deutschflow.main
+& (Join-Path $Repository ".venv\Scripts\deutschflow-server.exe")
 if ($LASTEXITCODE -ne 0) { Stop-WithMessage "The local service stopped with an error." }

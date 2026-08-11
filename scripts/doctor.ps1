@@ -82,7 +82,7 @@ if ($Git) {
 } else { Show-Check "Git" "WARN" "Git was not found; runtime use still works." Yellow }
 
 try {
-    $Health = Invoke-RestMethod -Uri "http://127.0.0.1:8765/api/v1/health" -TimeoutSec 2
+    $Health = Invoke-RestMethod -Uri "http://127.0.0.1:43131/api/v1/health" -TimeoutSec 2
     Show-Check "Local service" "OK" "Running (version $($Health.version))." Green
 } catch { Show-Check "Local service" "INFO" "Not running. RUN.bat starts it." Cyan }
 

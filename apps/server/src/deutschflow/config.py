@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_prefix="DEUTSCHFLOW_", case_sensitive=False)
 
     host: str = "127.0.0.1"
-    port: int = 8765
+    port: int = 43131
     data_dir: Path = Path.home() / ".deutschflow"
     database_url: str | None = None
     provider: str = "argos"
@@ -24,4 +24,3 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
-

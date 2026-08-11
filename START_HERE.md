@@ -29,7 +29,7 @@ Without an optional Argos German-to-English package, DeutschFlow clearly reports
 - A DeutschFlow side panel, or a packaged extension tab if side panels are unavailable.
 - The exact text you selected and a bounded nearby sentence when the page permits access.
 - Learn, Wordbook, Review, and Settings views backed by local storage.
-- A terminal window showing the local service at `http://127.0.0.1:8765`.
+- A status message showing the local service at `http://127.0.0.1:43131`.
 
 Learning data is stored under your user profile in `.deutschflow`. JSON and CSV exports are initiated from the extension; the repository's `artifacts/` folder is reserved for development outputs.
 

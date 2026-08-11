@@ -4,7 +4,8 @@ from datetime import datetime
 def test_health_is_public_and_minimal(client):
     response = client.get("/api/v1/health")
     assert response.status_code == 200
-    assert set(response.json()) == {"status", "version", "provider_available"}
+    assert response.json()["application"] == "deutschflow"
+    assert set(response.json()) == {"application", "status", "version", "provider_available"}
 
 
 def test_authentication_failures_are_structured(client):

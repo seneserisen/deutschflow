@@ -1,6 +1,6 @@
 # Local API v1
 
-Base URL: `http://127.0.0.1:8765`. Protected endpoints require `Authorization: Bearer <local token>`. Errors have `{ "error": { "code", "message" } }` and never expose stack traces.
+Base URL: `http://127.0.0.1:43131`. Protected endpoints require `Authorization: Bearer <local token>`. Errors have `{ "error": { "code", "message" } }` and never expose stack traces. The public health response includes `application: deutschflow` so local supervisors can reject port collisions with unrelated applications.
 
 | Method | Path | Auth | Purpose |
 |---|---|---:|---|
@@ -20,4 +20,3 @@ Base URL: `http://127.0.0.1:8765`. Protected endpoints require `Authorization: B
 | DELETE | `/api/v1/data` | yes | Delete all learning data |
 
 Stable codes include `PAIRING_REQUIRED`, `INVALID_TOKEN`, `SELECTION_TOO_LONG`, `TRANSLATION_PROVIDER_UNAVAILABLE`, `LANGUAGE_PAIR_UNAVAILABLE`, `ITEM_NOT_FOUND`, `DUPLICATE_ITEM`, `IMPORT_MALFORMED`, and `REQUEST_TOO_LARGE`.
-
